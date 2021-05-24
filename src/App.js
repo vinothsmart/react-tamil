@@ -34,6 +34,8 @@ function App() {
         .filter((item) => {
           if (search == "") {
             return item;
+          } else if (item.name.toLowerCase().includes(search.toLowerCase())) {
+            return item;
           }
         })
         .map((item) => {
