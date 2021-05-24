@@ -4,6 +4,7 @@ import "./App.css";
 
 function App() {
   const [product, setProduct] = useState([]);
+  const [search, setSearch] = useState("");
 
   const getProductData = async () => {
     try {
@@ -21,10 +22,27 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Hello World</h1>
-      {product.map((item) => {
-        return <p>{item.name}</p>;
-      })}
+      <h1>Product List</h1>
+      <input
+        type="text"
+        placeholder="Search Here"
+        onChange={(e) => {
+          setSearch(e.target.value);
+        }}
+      />
+      {product
+        .filter((item) => {
+          if (search == "") {
+            return item;
+          }
+        })
+        .map((item) => {
+          return (
+            <p>
+              {item.name} -{item.price}
+            </p>
+          );
+        })}
     </div>
   );
 }
