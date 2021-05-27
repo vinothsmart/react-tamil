@@ -89,12 +89,28 @@ function App() {
             </TableRow>
           </TableHead>
           <TableBody>
-            <StyledTableRow>
-              <StyledTableCell component="th" scope="row">
-                Product Name
-              </StyledTableCell>
-              <StyledTableCell align="right">Product Price</StyledTableCell>
-            </StyledTableRow>
+            {product
+              .filter((item) => {
+                if (search == "") {
+                  return item;
+                } else if (
+                  item.name.toLowerCase().includes(search.toLowerCase())
+                ) {
+                  return item;
+                }
+              })
+              .map((item) => {
+                return (
+                  <StyledTableRow>
+                    <StyledTableCell component="th" scope="row">
+                      {item.name}
+                    </StyledTableCell>
+                    <StyledTableCell align="right">
+                      {item.price}
+                    </StyledTableCell>
+                  </StyledTableRow>
+                );
+              })}
           </TableBody>
         </Table>
       </TableContainer>
