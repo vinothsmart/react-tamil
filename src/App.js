@@ -48,7 +48,9 @@ function App() {
       );
       // console.log(data.data);
       setProduct(data.data);
-    } catch (e) {}
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   useEffect(() => {
